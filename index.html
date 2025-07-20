@@ -92,9 +92,9 @@
             <div id="timerContainer">
                 <p class="text-lg">Your download will be ready in <span id="countdown" class="font-bold text-xl text-cyan-400">10</span> seconds.</p>
             </div>
-            <button id="finalDownloadLink" class="hidden mt-4 w-full bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-3 px-4 rounded-lg transition duration-300">
+            <a id="finalDownloadLink" href="#" target="_blank" class="hidden mt-4 w-full bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-3 px-4 rounded-lg transition duration-300 inline-block">
                 Click Here to Download
-            </button>
+            </a>
         </div>
     </div>
 
@@ -110,17 +110,18 @@
     <script>
         // --- DATABASE ---
         // In a real application, this would come from a server/API.
+        // I've added your ShrinkMe link for Dune: Part Two.
         const movies = [
-            { id: 1, title: 'Dune: Part Two', quality: '1080p', poster: 'https://placehold.co/500x750/1a202c/ffffff?text=Dune+2', description: 'Paul Atreides unites with Chani and the Fremen while seeking revenge against the conspirators who destroyed his family.', category: '1080p' },
-            { id: 2, title: 'Godzilla x Kong', quality: '720p', poster: 'https://placehold.co/500x750/1a202c/ffffff?text=Godzilla+x+Kong', description: 'The two titans, Godzilla and Kong, clash in an epic battle as humans unravel their intertwined origins and connection to Skull Island\'s mysteries.', category: '720p' },
-            { id: 3, title: 'The Marvels', quality: '1080p', poster: 'https://placehold.co/500x750/1a202c/ffffff?text=The+Marvels', description: 'Carol Danvers, Kamala Khan, and Monica Rambeau team up after their powers become entangled.', category: '1080p' },
-            { id: 4, title: 'Aquaman 2', quality: '480p', poster: 'https://placehold.co/500x750/1a202c/ffffff?text=Aquaman+2', description: 'Aquaman must forge an uneasy alliance with an unlikely ally to save Atlantis and the rest of the world.', category: '480p' },
-            { id: 5, title: 'Jawan', quality: '720p', poster: 'https://placehold.co/500x750/1a202c/ffffff?text=Jawan', description: 'A man is driven by a personal vendetta to rectify the wrongs in society, in a way that resonates with the masses.', category: 'Hindi Dubbed' },
-            { id: 6, title: 'Oppenheimer', quality: '1080p', poster: 'https://placehold.co/500x750/1a202c/ffffff?text=Oppenheimer', description: 'The story of American scientist J. Robert Oppenheimer and his role in the development of the atomic bomb.', category: '1080p' },
-            { id: 7, title: 'Spider-Man: Across the Spider-Verse', quality: '1080p', poster: 'https://placehold.co/500x750/1a202c/ffffff?text=Spider-Verse', description: 'Miles Morales catapults across the Multiverse, where he encounters a team of Spider-People charged with protecting its very existence.', category: '1080p' },
-            { id: 8, title: 'Pathaan', quality: '720p', poster: 'https://placehold.co/500x750/1a202c/ffffff?text=Pathaan', description: 'An Indian RAW agent takes on a ruthless mercenary with a devious plan.', category: 'Hindi Dubbed' },
-            { id: 9, title: 'The Creator', quality: '720p', poster: 'https://placehold.co/500x750/1a202c/ffffff?text=The+Creator', description: 'Amid a future war between the human race and the forces of artificial intelligence, a former special forces agent is recruited to hunt down and kill the Creator.', category: '720p' },
-            { id: 10, title: 'Guardians of the Galaxy Vol. 3', quality: '1080p', poster: 'https://placehold.co/500x750/1a202c/ffffff?text=Guardians+3', description: 'Still reeling from the loss of Gamora, Peter Quill rallies his team to defend the universe and one of their own - a mission that could mean the end of the Guardians if not successful.', category: '1080p' },
+            { id: 1, title: 'Dune: Part Two', quality: '1080p', poster: 'https://placehold.co/500x750/1a202c/ffffff?text=Dune+2', description: 'Paul Atreides unites with Chani and the Fremen while seeking revenge against the conspirators who destroyed his family.', category: '1080p', downloadLink: 'https://shrinkme.ink/lcLYgB' },
+            { id: 2, title: 'Godzilla x Kong', quality: '720p', poster: 'https://placehold.co/500x750/1a202c/ffffff?text=Godzilla+x+Kong', description: 'The two titans, Godzilla and Kong, clash in an epic battle as humans unravel their intertwined origins and connection to Skull Island\'s mysteries.', category: '720p', downloadLink: '#' },
+            { id: 3, title: 'The Marvels', quality: '1080p', poster: 'https://placehold.co/500x750/1a202c/ffffff?text=The+Marvels', description: 'Carol Danvers, Kamala Khan, and Monica Rambeau team up after their powers become entangled.', category: '1080p', downloadLink: '#' },
+            { id: 4, title: 'Aquaman 2', quality: '480p', poster: 'https://placehold.co/500x750/1a202c/ffffff?text=Aquaman+2', description: 'Aquaman must forge an uneasy alliance with an unlikely ally to save Atlantis and the rest of the world.', category: '480p', downloadLink: '#' },
+            { id: 5, title: 'Jawan', quality: '720p', poster: 'https://placehold.co/500x750/1a202c/ffffff?text=Jawan', description: 'A man is driven by a personal vendetta to rectify the wrongs in society, in a way that resonates with the masses.', category: 'Hindi Dubbed', downloadLink: '#' },
+            { id: 6, title: 'Oppenheimer', quality: '1080p', poster: 'https://placehold.co/500x750/1a202c/ffffff?text=Oppenheimer', description: 'The story of American scientist J. Robert Oppenheimer and his role in the development of the atomic bomb.', category: '1080p', downloadLink: '#' },
+            { id: 7, title: 'Spider-Man: Across the Spider-Verse', quality: '1080p', poster: 'https://placehold.co/500x750/1a202c/ffffff?text=Spider-Verse', description: 'Miles Morales catapults across the Multiverse, where he encounters a team of Spider-People charged with protecting its very existence.', category: '1080p', downloadLink: '#' },
+            { id: 8, title: 'Pathaan', quality: '720p', poster: 'https://placehold.co/500x750/1a202c/ffffff?text=Pathaan', description: 'An Indian RAW agent takes on a ruthless mercenary with a devious plan.', category: 'Hindi Dubbed', downloadLink: '#' },
+            { id: 9, title: 'The Creator', quality: '720p', poster: 'https://placehold.co/500x750/1a202c/ffffff?text=The+Creator', description: 'Amid a future war between the human race and the forces of artificial intelligence, a former special forces agent is recruited to hunt down and kill the Creator.', category: '720p', downloadLink: '#' },
+            { id: 10, title: 'Guardians of the Galaxy Vol. 3', quality: '1080p', poster: 'https://placehold.co/500x750/1a202c/ffffff?text=Guardians+3', description: 'Still reeling from the loss of Gamora, Peter Quill rallies his team to defend the universe and one of their own - a mission that could mean the end of the Guardians if not successful.', category: '1080p', downloadLink: '#' },
         ];
 
         // --- DOM ELEMENTS ---
@@ -132,6 +133,8 @@
         const countdownEl = document.getElementById('countdown');
         const timerContainer = document.getElementById('timerContainer');
         const finalDownloadLink = document.getElementById('finalDownloadLink');
+
+        let adCountdownInterval; // To hold the interval ID
 
         // --- FUNCTIONS ---
 
@@ -175,11 +178,8 @@
                     <h2 class="text-3xl font-bold text-white mb-2">${movie.title}</h2>
                     <p class="text-gray-400 mb-6">${movie.description}</p>
                     <div class="space-y-3">
-                        <button class="download-btn w-full bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-3 px-4 rounded-lg transition duration-300">
-                            Download ${movie.quality} (Link 1)
-                        </button>
-                        <button class="download-btn w-full bg-gray-700 hover:bg-gray-600 text-white font-bold py-3 px-4 rounded-lg transition duration-300">
-                            Download ${movie.quality} (Link 2)
+                        <button class="download-btn w-full bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-3 px-4 rounded-lg transition duration-300" data-link="${movie.downloadLink}">
+                            Download ${movie.quality}
                         </button>
                     </div>
                 </div>
@@ -189,25 +189,40 @@
 
         /**
          * Shows the ad wall and starts the countdown
+         * @param {string} url - The download URL to set for the final button
          */
-        function showAdWall() {
+        function showAdWall(url) {
             movieModal.classList.remove('flex'); // Hide movie details
             adWallModal.classList.add('flex'); // Show ad wall
             
+            // Set the final download link's href attribute
+            finalDownloadLink.href = url;
+
             let countdown = 10;
             countdownEl.textContent = countdown;
             timerContainer.classList.remove('hidden');
             finalDownloadLink.classList.add('hidden');
+            
+            // Clear any previous interval to prevent bugs
+            clearInterval(adCountdownInterval);
 
-            const interval = setInterval(() => {
+            adCountdownInterval = setInterval(() => {
                 countdown--;
                 countdownEl.textContent = countdown;
                 if (countdown <= 0) {
-                    clearInterval(interval);
+                    clearInterval(adCountdownInterval);
                     timerContainer.classList.add('hidden');
                     finalDownloadLink.classList.remove('hidden');
                 }
             }, 1000);
+        }
+
+        /**
+         * Hides all modals
+         */
+        function hideAllModals() {
+            movieModal.classList.remove('flex');
+            adWallModal.classList.remove('flex');
         }
 
         // --- EVENT LISTENERS ---
@@ -230,29 +245,34 @@
         });
 
         // Close movie modal
-        closeModalBtn.addEventListener('click', () => {
-            movieModal.classList.remove('flex');
-        });
+        closeModalBtn.addEventListener('click', hideAllModals);
         
         // Close modal on outside click
         movieModal.addEventListener('click', (e) => {
             if (e.target === movieModal) {
-                 movieModal.classList.remove('flex');
+                 hideAllModals();
             }
         });
 
         // Handle download button clicks to show ad wall
         modalContent.addEventListener('click', (e) => {
             if (e.target.classList.contains('download-btn')) {
-                showAdWall();
+                const downloadUrl = e.target.dataset.link;
+                if (downloadUrl && downloadUrl !== '#') {
+                    showAdWall(downloadUrl);
+                } else {
+                    alert('Download link is not available for this movie yet.');
+                }
             }
         });
         
-        // Handle final download link click
+        // When the final download link is clicked, it will open the new tab.
+        // We also hide the ad wall modal for a cleaner experience.
         finalDownloadLink.addEventListener('click', () => {
-            // In a real scenario, this would be the actual Google Drive link
-            alert('Download Started! (This is a placeholder)');
-            adWallModal.classList.remove('flex');
+            // Hide the modal slightly after the click to allow the new tab to open
+            setTimeout(() => {
+                adWallModal.classList.remove('flex');
+            }, 100);
         });
 
     </script>
